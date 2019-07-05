@@ -17,6 +17,7 @@ public class ArenaScript : MonoBehaviour
     public int playerSaldiri, oppenentSaldiri;
     public int playerImage, oppenentImage;
     public int oppenentId,playerId;
+    public int playerPara;
     public Text playerNameTxt, opponentNameTxt, playerCanTxt, opponentCanTxt;
     public Image playerImg, opponentImg;
     public Sprite robotresim1, robotresim2, robotresim3, robotresim4, robotresim5;
@@ -60,6 +61,7 @@ public class ArenaScript : MonoBehaviour
         playerSaldiri = Player.instance.robotsaldiri;
         playerImage = Player.instance.robotimage;
         playerId = Convert.ToInt32( Player.instance.id );
+        playerPara = Player.instance.para;
             
     }
 
@@ -256,7 +258,7 @@ public class ArenaScript : MonoBehaviour
                 opponentCanTxt.text = "Cânı : " + oppenentCan;                   
         }else if (mermi == "red")
         {
-                playerCan = playerCan - oppenentSaldiri*5 + playerZirh / 2;
+                playerCan = playerCan - oppenentSaldiri + playerZirh / 2;
                 playerCanTxt.text = "Cânım : " + playerCan;         
         }
     }
@@ -269,9 +271,15 @@ public class ArenaScript : MonoBehaviour
 
     public void SavasBitir()
     {
-        Debug.Log("çalıştı");
+        if (playerCan > oppenentCan)
+        {
+           
+            playerPara += 50;
+            Player.instance.ParaGuncelle(playerId.ToString(), playerPara);
+        }
         atesEt = false;
         savasDevamEdiyor = false;
     }
 
+   
 }
