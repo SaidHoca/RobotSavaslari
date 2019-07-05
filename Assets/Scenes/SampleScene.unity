@@ -739,7 +739,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 171767783}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1473925044}
+        m_MethodName: CanGuncelle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &171767783
@@ -2887,7 +2898,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 951020152}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1473925042}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &951020152
@@ -4017,7 +4039,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1473925045}
   - component: {fileID: 1473925044}
-  - component: {fileID: 1473925043}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4025,18 +4046,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1473925043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473925042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e44f44a1c554ba64aa5680336b74c9e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1473925044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4059,6 +4068,11 @@ MonoBehaviour:
   robotsaldiri: 0
   robothiz: 0
   robotimage: 0
+  canText: {fileID: 36307803}
+  paraText: {fileID: 951762944}
+  zirhText: {fileID: 1213797306}
+  saldiriText: {fileID: 735587958}
+  durum: 0
 --- !u!4 &1473925045
 Transform:
   m_ObjectHideFlags: 0
