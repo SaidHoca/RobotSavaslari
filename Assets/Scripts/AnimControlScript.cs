@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AnimControlScript : MonoBehaviour
 {
 
     public static AnimControlScript instance;
-    public Animator loginAnim, createAnim, garajAnim,arenaAnim;
+    public GameObject tintPanel;
+    public Animator loginAnim, createAnim, garajAnim,arenaAnim,tintAnim;
     // bu animatörlerin hepsinde bool tanımlı ve login anim true olarak, diğerleri false olarak başlıyor..
 
     void Awake()
@@ -27,9 +29,13 @@ public class AnimControlScript : MonoBehaviour
     {
         if (durum)
         {
+
+            TintAnimasyon();
             garajAnim.SetBool("GarajAnim", true);
         }else if (!durum)
         {
+
+            TintAnimasyon();
             garajAnim.SetBool("GarajAnim", false);
         }
     }
@@ -39,12 +45,16 @@ public class AnimControlScript : MonoBehaviour
         if (durum)
         {
             // burada login panelindeki create tuşuna basınca yapılanlar
+
+            TintAnimasyon();
             createAnim.SetBool("CreateAnim", true);
             loginAnim.SetBool("LoginAnim", false);
         }
         else if (!durum)
         {
             // burada create panelindeki geri tuşuna basılınca yapılanlar
+
+            TintAnimasyon();
             createAnim.SetBool("CreateAnim", false);
             loginAnim.SetBool("LoginAnim", true);
         }
@@ -54,10 +64,14 @@ public class AnimControlScript : MonoBehaviour
     {
         if (durum)
         {
+
+            TintAnimasyon();
             loginAnim.SetBool("LoginAnim", true);
         }
         else if (!durum)
         {
+
+            TintAnimasyon();
             loginAnim.SetBool("LoginAnim", false);
         }
     }
@@ -66,18 +80,23 @@ public class AnimControlScript : MonoBehaviour
     {
         if (durum)
         {
+            TintAnimasyon();
             arenaAnim.SetBool("Arena", true);
             garajAnim.SetBool("GarajAnim", false);
         }
         else if (!durum)
         {
+            
+            TintAnimasyon();
             arenaAnim.SetBool("Arena", false);
             garajAnim.SetBool("GarajAnim", true);
         }
     }
 
-
-
-
+    public void TintAnimasyon()
+    {
+        tintPanel.SetActive(true);
+        tintAnim.SetTrigger("Tint");
+    }
 
 }

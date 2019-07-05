@@ -106,6 +106,8 @@ public class ArenaScript : MonoBehaviour
                     StartCoroutine(GetUser(oppenentId.ToString()));
                     // ateş etme işleminin fitilini ateşliyoruz..
                     StartCoroutine(SavasBaslat());
+                    // yeni savaş için değişkenlerimizi ayarlamalıyız...
+                    savasDevamEdiyor = true;
                     
                 }
             }
@@ -214,30 +216,34 @@ public class ArenaScript : MonoBehaviour
     public IEnumerator Rocket()
     {
         atesEt = false;
-        yield return new WaitForSeconds(1.2f);
-        if (baslangicSirasi == 1)
+        yield return new WaitForSeconds(1.2f);  
+
+        if(playerCan > 0 && oppenentCan > 0 && savasDevamEdiyor)
         {
-            // birinci oyuncu saldırıyor..
-            GameObject blue = Instantiate(blueRocket,new Vector3(-5f,0.3f,0f),Quaternion.identity);
-            blue.GetComponent<Rigidbody2D>().velocity = new Vector2(10,0);
+            if (baslangicSirasi == 1)
+            {
+                // birinci oyuncu saldırıyor..
+                GameObject blue = Instantiate(blueRocket, new Vector3(-5f, 0.3f, 0f), Quaternion.identity);
+                blue.GetComponent<Rigidbody2D>().velocity = new Vector2(10, 0);
 
 
-            baslangicSirasi = 2;
-        }
-        else if (baslangicSirasi == 2)
-        {
-            // ikinci oyuncu saldırıyor...
+                baslangicSirasi = 2;
+            }
+            else if (baslangicSirasi == 2)
+            {
+                // ikinci oyuncu saldırıyor...
 
-            GameObject red = Instantiate(redRocket, new Vector3(5f, 0.3f, 0f), Quaternion.identity);
-            red.GetComponent<Rigidbody2D>().velocity = new Vector2(-10, 0);
+                GameObject red = Instantiate(redRocket, new Vector3(5f, 0.3f, 0f), Quaternion.identity);
+                red.GetComponent<Rigidbody2D>().velocity = new Vector2(-10, 0);
 
-            baslangicSirasi = 1;
-        }
-
-        if(playerCan > 0 && oppenentCan > 0)
-        {
+                baslangicSirasi = 1;
+            }
             atesEt = true;
-   
+
+        }
+        else
+        {
+            SavasBitir();
         }
       
     }
@@ -245,27 +251,13 @@ public class ArenaScript : MonoBehaviour
     public void CanAzalt(string mermi)
     {
         if(mermi == "blue")
-        {    if ( oppenentCan > 0 && playerCan > 0)
-            {
+        {   
                 oppenentCan = oppenentCan - playerSaldiri + oppenentZirh / 2;
-                opponentCanTxt.text = "Cânı : " + oppenentCan;
-            }
-            else
-            {
-                SavasBitir();
-            }                      
-
+                opponentCanTxt.text = "Cânı : " + oppenentCan;                   
         }else if (mermi == "red")
         {
-            if ( playerCan > 0 && playerCan >0)
-            {
                 playerCan = playerCan - oppenentSaldiri*5 + playerZirh / 2;
-                playerCanTxt.text = "Cânım : " + playerCan;
-            }
-            else
-            {
-                SavasBitir();
-            }           
+                playerCanTxt.text = "Cânım : " + playerCan;         
         }
     }
 
@@ -277,8 +269,9 @@ public class ArenaScript : MonoBehaviour
 
     public void SavasBitir()
     {
-        savasDevamEdiyor = false;
+        Debug.Log("çalıştı");
         atesEt = false;
+        savasDevamEdiyor = false;
     }
 
 }
