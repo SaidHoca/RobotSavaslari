@@ -51,7 +51,7 @@ public class CreateUser : MonoBehaviour
             {
                 Debug.Log(www.downloadHandler.text);
                 AnimControlScript.instance.createAnim.SetBool("CreateAnim", false);
-                AnimControlScript.instance.garajAnim.SetBool("GarajAnim", true);
+                AnimControlScript.instance.loginAnim.SetBool("LoginAnim", true);
                
             }
         }

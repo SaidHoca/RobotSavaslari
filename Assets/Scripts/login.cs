@@ -13,6 +13,7 @@ public class login : MonoBehaviour
     public Text isim, can, zirh, hiz, saldiri, para;
     public Image robotresim;
     public Sprite robotresim1, robotresim2, robotresim3, robotresim4, robotresim5;
+    
 
 
     public void loginBtn()
@@ -120,4 +121,5 @@ public class login : MonoBehaviour
             robotresim.sprite = robotresim5;
         }
     }
+
 }

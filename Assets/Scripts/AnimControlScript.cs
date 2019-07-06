@@ -7,15 +7,14 @@ public class AnimControlScript : MonoBehaviour
 {
 
     public static AnimControlScript instance;
-    public GameObject tintPanel;
-    public Animator loginAnim, createAnim, garajAnim,arenaAnim,tintAnim;
+    public GameObject tintPanel,olusturulduPanel,savassonuPanel;
+    public Animator loginAnim, createAnim, garajAnim,arenaAnim,tintAnim,olusturulduAnim,savasSonuAnim;
     // bu animatörlerin hepsinde bool tanımlı ve login anim true olarak, diğerleri false olarak başlıyor..
 
     void Awake()
     {
         MakeInstance();
         
-
     }
     void MakeInstance()
     {
@@ -99,4 +98,16 @@ public class AnimControlScript : MonoBehaviour
         tintAnim.SetTrigger("Tint");
     }
 
+
+    public void OyuncuOlusturulduAnim()
+    {
+        olusturulduPanel.SetActive(true);
+        olusturulduAnim.SetTrigger("Tint");
+    }
+
+    public void SavasSonuAnim()
+    {
+        savassonuPanel.SetActive(true);
+        savasSonuAnim.SetTrigger("Tint");
+    }
 }
