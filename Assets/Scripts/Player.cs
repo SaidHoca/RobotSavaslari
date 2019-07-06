@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
             else
             {
                 Debug.Log("Para artırıldı");
-                paraText.text = para.ToString();
+                paraText.text = "Bakiye : " + para.ToString() + " paracık";
                 // para güncellemesi doğru bir şekilde çalştığında yapılacaklar.. kazandı yazısı gibi birşey olabilir..             
             }
         }
@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
             para = para - 15;
             StartCoroutine(ParaGuncelleWeb(id, para));
             paraText.text = "Bakiye : " + para.ToString() + " paracık";
-            saldiriText.text = "Saldiri :" + robotsaldiri.ToString();
+            saldiriText.text = "Saldiri : " + robotsaldiri.ToString();
             durum = false;
         }
     }
@@ -132,7 +132,7 @@ public class Player : MonoBehaviour
             para = para - 30;
             StartCoroutine(ParaGuncelleWeb(id, para));
             paraText.text = "Bakiye : " + para.ToString() + " paracık";
-            canText.text = "Can :" + robotcan.ToString();
+            canText.text = "Can : " + robotcan.ToString();
             durum = false;
         }
     }
@@ -165,7 +165,7 @@ public class Player : MonoBehaviour
             para = para - 15;
             StartCoroutine(ParaGuncelleWeb(id, para));
             paraText.text = "Bakiye : " + para.ToString() + " paracık";
-            zirhText.text = "Zirh :" + robotzirh.ToString();
+            zirhText.text = "Zirh : " + robotzirh.ToString();
             durum = false;
         }
     }

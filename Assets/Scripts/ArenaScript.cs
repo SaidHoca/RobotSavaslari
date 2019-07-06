@@ -24,6 +24,7 @@ public class ArenaScript : MonoBehaviour
     public GameObject blueRocket, redRocket;
     bool atesEt = false;
     bool savasDevamEdiyor = true;
+    bool savasNormalBitirildi = false;
 
 
     void Awake()
@@ -158,8 +159,8 @@ public class ArenaScript : MonoBehaviour
         // UI LARI AYARLIYORUZ..
         playerNameTxt.text = playerName;
         opponentNameTxt.text = oppenentName;
-        playerCanTxt.text = playerCan.ToString();
-        opponentCanTxt.text = oppenentCan.ToString();     
+        playerCanTxt.text ="Cânım : "+ playerCan.ToString();
+        opponentCanTxt.text = "Cânı : "+oppenentCan.ToString();     
 
     }
 
@@ -243,7 +244,9 @@ public class ArenaScript : MonoBehaviour
         }
         else
         {
+            SavasBitisTint();
             SavasBitir();
+           
         }
       
     }
@@ -256,8 +259,13 @@ public class ArenaScript : MonoBehaviour
                 opponentCanTxt.text = "Cânı : " + oppenentCan;                   
         }else if (mermi == "red")
         {
+            
+            if(playerZirh < oppenentSaldiri*2)
+            {
                 playerCan = playerCan - oppenentSaldiri + playerZirh / 2;
-                playerCanTxt.text = "Cânım : " + playerCan;         
+                playerCanTxt.text = "Cânım : " + playerCan;
+            }      
+                     
         }
     }
 
@@ -269,13 +277,30 @@ public class ArenaScript : MonoBehaviour
 
     public void SavasBitir()
     {
-        if (playerCan > oppenentCan)
+        if (playerCan <= 0 || oppenentCan <= 0) savasNormalBitirildi = true;
+        if (playerCan > oppenentCan && savasNormalBitirildi)
         {          
-            Player.instance.ParaGuncelle(playerId.ToString());           
+            Player.instance.ParaGuncelle(playerId.ToString());
         }
+
         atesEt = false;
         savasDevamEdiyor = false;
+
         
+        
+    }
+
+    public void SavasBitisTint()
+    {
+        if (playerCan > oppenentCan & savasNormalBitirildi)
+        {
+           
+            AnimControlScript.instance.SavasSonuAnim(true);
+        }
+        else
+        {
+            AnimControlScript.instance.SavasSonuAnim(false);
+        }
     }
 
    

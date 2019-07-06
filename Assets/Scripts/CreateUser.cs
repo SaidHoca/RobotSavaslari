@@ -27,7 +27,10 @@ public class CreateUser : MonoBehaviour
             userPass = userPassField.text.ToString();
             robotType = tip;
             StartCoroutine(RegisterUser(userName, userPass, tip));
-            
+            AnimControlScript.instance.garajAnim.SetBool("GarajAnim", true);
+            AnimControlScript.instance.createAnim.SetBool("CreateAnim", false);
+            AnimControlScript.instance.tintAnim.SetTrigger("Tint");
+            AnimControlScript.instance.OyuncuOlusturulduAnim();
         }
         
     }

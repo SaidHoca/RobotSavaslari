@@ -9,6 +9,7 @@ public class AnimControlScript : MonoBehaviour
     public static AnimControlScript instance;
     public GameObject tintPanel,olusturulduPanel,savassonuPanel;
     public Animator loginAnim, createAnim, garajAnim,arenaAnim,tintAnim,olusturulduAnim,savasSonuAnim;
+    public Text sonText;
     // bu animatörlerin hepsinde bool tanımlı ve login anim true olarak, diğerleri false olarak başlıyor..
 
     void Awake()
@@ -105,9 +106,17 @@ public class AnimControlScript : MonoBehaviour
         olusturulduAnim.SetTrigger("Tint");
     }
 
-    public void SavasSonuAnim()
+    public void SavasSonuAnim(bool kazandin)
     {
         savassonuPanel.SetActive(true);
         savasSonuAnim.SetTrigger("Tint");
+        if (kazandin)
+        {
+            sonText.text = "Tebrikler... Kazandın... Al sana 100 paracık...";
+        }
+        else
+        {
+            sonText.text = "Kazanamadın hacı... Senin robot çöp...";
+        }
     }
 }
