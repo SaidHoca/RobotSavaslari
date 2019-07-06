@@ -87,11 +87,11 @@ public class login : MonoBehaviour
                 Player.instance.robotimage = playerJson["robotimage"];
 
                 isim.text = Player.instance.playername;
-                can.text = "Health : " + Player.instance.robotcan.ToString();
-                zirh.text = "Armor : " + Player.instance.robotzirh.ToString();
+                can.text = "Can : " + Player.instance.robotcan.ToString();
+                zirh.text = "Zırh : " + Player.instance.robotzirh.ToString();
                 hiz.text = "Speed : " + Player.instance.robothiz.ToString();
-                saldiri.text = "Attack : " + Player.instance.robotsaldiri.ToString();
-                para.text = "Coins : " + Player.instance.para.ToString();
+                saldiri.text = "Saldırı : " + Player.instance.robotsaldiri.ToString();
+                para.text = "Bakiye : " + Player.instance.para.ToString() + " paracık";
                 RobotResimBelirle(Player.instance.robotimage);
 
             }

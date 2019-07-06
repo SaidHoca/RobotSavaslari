@@ -17,7 +17,6 @@ public class ArenaScript : MonoBehaviour
     public int playerSaldiri, oppenentSaldiri;
     public int playerImage, oppenentImage;
     public int oppenentId,playerId;
-    public int playerPara;
     public Text playerNameTxt, opponentNameTxt, playerCanTxt, opponentCanTxt;
     public Image playerImg, opponentImg;
     public Sprite robotresim1, robotresim2, robotresim3, robotresim4, robotresim5;
@@ -61,7 +60,6 @@ public class ArenaScript : MonoBehaviour
         playerSaldiri = Player.instance.robotsaldiri;
         playerImage = Player.instance.robotimage;
         playerId = Convert.ToInt32( Player.instance.id );
-        playerPara = Player.instance.para;
             
     }
 
@@ -272,13 +270,12 @@ public class ArenaScript : MonoBehaviour
     public void SavasBitir()
     {
         if (playerCan > oppenentCan)
-        {
-           
-            playerPara += 50;
-            Player.instance.ParaGuncelle(playerId.ToString(), playerPara);
+        {          
+            Player.instance.ParaGuncelle(playerId.ToString());           
         }
         atesEt = false;
         savasDevamEdiyor = false;
+        
     }
 
    

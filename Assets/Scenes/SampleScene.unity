@@ -1575,7 +1575,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "10 Para kar\u015F\u0131l\u0131\u011F\u0131nda sald\u0131r\u0131n\u0131
+  m_Text: "15 Para kar\u015F\u0131l\u0131\u011F\u0131nda sald\u0131r\u0131n\u0131
     +5 art\u0131r."
 --- !u!222 &501401137
 CanvasRenderer:
@@ -4058,7 +4058,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518ec250932ba8d4ca98ca0e07115a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  web: {fileID: 0}
   id: 
   playername: 
   playerpass: 

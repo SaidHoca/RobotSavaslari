@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public static Player instance;
-    public  web web;
     public string id;
     public string playername;
     public string playerpass;
@@ -20,6 +19,7 @@ public class Player : MonoBehaviour
     public int robotimage;
     public Text canText, paraText, zirhText, saldiriText;
     public bool durum = false;
+
 
 
     void Awake()
@@ -42,19 +42,17 @@ public class Player : MonoBehaviour
         this.id = id;
     }
 
-    public void ParaGuncelle(string id , int para)
+    public void ParaGuncelle(string id )
     {
-        StartCoroutine(ParaGuncelleWeb(id, para));
+        para += 50;
+        StartCoroutine(ParaGuncelleWeb(id,para));
     }
 
-    public IEnumerator ParaGuncelleWeb(string id,int paramiz)
-    {
-        
+    public IEnumerator ParaGuncelleWeb(string id, int paramiz)
+    {        
         WWWForm form = new WWWForm();
         form.AddField("id", id);
-        form.AddField("para", paramiz);
-        
-
+        form.AddField("para", paramiz);      
         using (UnityWebRequest www = UnityWebRequest.Post("http://saidhoca.com/updatemoney.php", form))
         {
             yield return www.SendWebRequest();
@@ -66,14 +64,15 @@ public class Player : MonoBehaviour
             else
             {
                 Debug.Log("Para artırıldı");
+                paraText.text = para.ToString();
                 // para güncellemesi doğru bir şekilde çalştığında yapılacaklar.. kazandı yazısı gibi birşey olabilir..             
             }
         }
     }
 
+
     public IEnumerator SaldiriGuncelleWeb()
     {
-
         WWWForm form = new WWWForm();
         robotsaldiri += 5;
         form.AddField("saldiri", robotsaldiri);
@@ -81,23 +80,32 @@ public class Player : MonoBehaviour
         using (UnityWebRequest www = UnityWebRequest.Post("http://saidhoca.com/updateattack.php", form))
         {
             yield return www.SendWebRequest();
-
             if (www.isNetworkError || www.isHttpError)
             {
                 Debug.Log("Saldırı güncellenemedi !!!!");
             }
             else
             {
-                Debug.Log("Saldırı güncellendi");
-                
-                         
+                Debug.Log("Saldırı güncellendi");                                      
             }
+        }
+    }
+
+    public void SaldiriGuncelle()
+    {
+        if (para >= 15)
+        {
+            StartCoroutine(SaldiriGuncelleWeb());
+            para = para - 15;
+            StartCoroutine(ParaGuncelleWeb(id, para));
+            paraText.text = "Bakiye : " + para.ToString() + " paracık";
+            saldiriText.text = "Saldiri :" + robotsaldiri.ToString();
+            durum = false;
         }
     }
 
     public IEnumerator CanGuncelleWeb()
     {
-
         WWWForm form = new WWWForm();
         robotcan += 10;
         form.AddField("can", robotcan);
@@ -105,57 +113,67 @@ public class Player : MonoBehaviour
         using (UnityWebRequest www = UnityWebRequest.Post("http://saidhoca.com/updatehealth.php", form))
         {
             yield return www.SendWebRequest();
-
             if (www.isNetworkError || www.isHttpError)
             {
                 Debug.Log("Can güncellenemedi !!!!");
             }
             else
             {
-                Debug.Log("Can güncellendi");
-                
-
-            }
-        }
-    }
-
-    public IEnumerator ZirhGuncelleWeb()
-    {
-
-        WWWForm form = new WWWForm();
-        robotcan += 6;
-        form.AddField("zirh", robotzirh);
-        form.AddField("id", id);
-        using (UnityWebRequest www = UnityWebRequest.Post("http://saidhoca.com/updatehealth.php", form))
-        {
-            yield return www.SendWebRequest();
-
-            if (www.isNetworkError || www.isHttpError)
-            {
-                Debug.Log("ZIRH güncellenemedi !!!!");
-            }
-            else
-            {
-                Debug.Log("ZIRH güncellendi");
-               
+                Debug.Log("Can güncellendi");                
             }
         }
     }
 
     public void CanGuncelle()
     {
-        
-        if ( para >= 30)
+        if (para >= 30)
         {
             StartCoroutine(CanGuncelleWeb());
             para = para - 30;
             StartCoroutine(ParaGuncelleWeb(id, para));
-            paraText.text = "Bakiye : " +  para.ToString() + "Para";
-            canText.text ="Robot Can :" + robotcan.ToString();
+            paraText.text = "Bakiye : " + para.ToString() + " paracık";
+            canText.text = "Can :" + robotcan.ToString();
             durum = false;
         }
-        
     }
+
+    public IEnumerator ZirhGuncelleWeb()
+    {
+        WWWForm form = new WWWForm();
+        robotzirh += 6;
+        form.AddField("zirh", robotzirh);
+        form.AddField("id", id);
+        using (UnityWebRequest www = UnityWebRequest.Post("http://saidhoca.com/updatearmor.php", form))
+        {
+            yield return www.SendWebRequest();
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log("ZIRH güncellenemedi !!!!");
+            }
+            else
+            {
+                Debug.Log("ZIRH güncellendi");               
+            }
+        }
+    }
+
+    public void ZirhGuncelle()
+    {
+        if (para >= 15)
+        {
+            StartCoroutine(ZirhGuncelleWeb());
+            para = para - 15;
+            StartCoroutine(ParaGuncelleWeb(id, para));
+            paraText.text = "Bakiye : " + para.ToString() + " paracık";
+            zirhText.text = "Zirh :" + robotzirh.ToString();
+            durum = false;
+        }
+    }
+
+
+
+
+
 }
 
 
