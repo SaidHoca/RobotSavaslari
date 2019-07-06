@@ -29,7 +29,7 @@ public class login : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("loginUser", username);
         form.AddField("loginPass", password);
-        using (UnityWebRequest www = UnityWebRequest.Post("http://saidhoca.com/login.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://www.saidhoca.com/login.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -62,7 +62,7 @@ public class login : MonoBehaviour
     {
         WWWForm form = new WWWForm();
         form.AddField("playerID", id);
-        using (UnityWebRequest www = UnityWebRequest.Post("http://saidhoca.com/getusersinfo.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://www.saidhoca.com/getusersinfo.php", form))
         {
             yield return www.SendWebRequest();
 
