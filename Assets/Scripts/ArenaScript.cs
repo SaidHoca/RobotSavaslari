@@ -77,7 +77,7 @@ public class ArenaScript : MonoBehaviour
     public IEnumerator CountUser()
     {
         WWWForm form = new WWWForm();
-        using (UnityWebRequest www = UnityWebRequest.Post("http://saidhoca.com/GetCount.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://saidhoca.com/GetCount.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -119,7 +119,7 @@ public class ArenaScript : MonoBehaviour
     {
         WWWForm form = new WWWForm();
         form.AddField("oppenentID", id);
-        using (UnityWebRequest www = UnityWebRequest.Post("http://saidhoca.com/GetOpponent.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://saidhoca.com/GetOpponent.php", form))
         {
             yield return www.SendWebRequest();
 

@@ -27,7 +27,7 @@ public class CreateUser : MonoBehaviour
             userPass = userPassField.text.ToString();
             robotType = tip;
             StartCoroutine(RegisterUser(userName, userPass, tip));
-            AnimControlScript.instance.garajAnim.SetBool("GarajAnim", true);
+            AnimControlScript.instance.garajAnim.SetBool("GarajAnim", false);
             AnimControlScript.instance.createAnim.SetBool("CreateAnim", false);
             AnimControlScript.instance.tintAnim.SetTrigger("Tint");
             AnimControlScript.instance.OyuncuOlusturulduAnim();
@@ -42,7 +42,7 @@ public class CreateUser : MonoBehaviour
         form.AddField("loginPass", password);
         form.AddField("robotImage", tip);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://saidhoca.com/registeruser.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://saidhoca.com/registeruser.php", form))
         {
             yield return www.SendWebRequest();
 

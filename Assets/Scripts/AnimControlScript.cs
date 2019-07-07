@@ -108,8 +108,7 @@ public class AnimControlScript : MonoBehaviour
 
     public void SavasSonuAnim(bool kazandin)
     {
-        savassonuPanel.SetActive(true);
-        savasSonuAnim.SetTrigger("Tint");
+        savassonuPanel.SetActive(true);      
         if (kazandin)
         {
             sonText.text = "Tebrikler... Kazandın... Al sana 100 paracık...";
@@ -118,5 +117,6 @@ public class AnimControlScript : MonoBehaviour
         {
             sonText.text = "Kazanamadın hacı... Senin robot çöp...";
         }
+        savasSonuAnim.SetTrigger("Tint");
     }
 }

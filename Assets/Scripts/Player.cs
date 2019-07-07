@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("id", id);
         form.AddField("para", paramiz);      
-        using (UnityWebRequest www = UnityWebRequest.Post("http://saidhoca.com/updatemoney.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://saidhoca.com/updatemoney.php", form))
         {
             yield return www.SendWebRequest();
             
@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
         robotsaldiri += 5;
         form.AddField("saldiri", robotsaldiri);
         form.AddField("id", id);
-        using (UnityWebRequest www = UnityWebRequest.Post("http://www.saidhoca.com/updateattack.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://www.saidhoca.com/updateattack.php", form))
         {
             yield return www.SendWebRequest();
             if (www.isNetworkError || www.isHttpError)
@@ -110,7 +110,7 @@ public class Player : MonoBehaviour
         robotcan += 10;
         form.AddField("can", robotcan);
         form.AddField("id", id);
-        using (UnityWebRequest www = UnityWebRequest.Post("http://www.saidhoca.com/updatehealth.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://www.saidhoca.com/updatehealth.php", form))
         {
             yield return www.SendWebRequest();
             if (www.isNetworkError || www.isHttpError)
@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
         robotzirh += 6;
         form.AddField("zirh", robotzirh);
         form.AddField("id", id);
-        using (UnityWebRequest www = UnityWebRequest.Post("http://saidhoca.com/updatearmor.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://saidhoca.com/updatearmor.php", form))
         {
             yield return www.SendWebRequest();
             if (www.isNetworkError || www.isHttpError)
