@@ -4555,7 +4555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518ec250932ba8d4ca98ca0e07115a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
+  id: ca-app-pub-9298179864504105/9595382943
   playername: 
   playerpass: 
   para: 0
